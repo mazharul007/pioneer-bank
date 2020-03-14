@@ -42,20 +42,18 @@ const withdrawBtn = document.getElementById("add-withdraw");
     // deposit section
     const withdrawAmount = document.getElementById("withdraw-amount").value;
     const withdrawNumber = parseFloat(withdrawAmount);
+    document.getElementById("withdraw-amount").value="";
 
     //deposit section update
     updateSpanText("currentWithdraw",withdrawNumber);
-    document.getElementById("deposit-amount").value="";
 
     // balance section update
+    updateSpanText("currentBalance", -1 * withdrawNumber)
 
-    const current= document.getElementById("currentBalance").innerText;
-    const currentBalance = parseFloat(current);
-    const updatedBalance = currentBalance - withdrawNumber;
-    document.getElementById("currentBalance").innerText= updatedBalance;
-
-
-    
+    // const current= document.getElementById("currentBalance").innerText;
+    // const currentBalance = parseFloat(current);
+    // const updatedBalance = currentBalance - withdrawNumber;
+    // document.getElementById("currentBalance").innerText= updatedBalance;
 })
 
 
