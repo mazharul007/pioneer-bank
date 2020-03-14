@@ -1,3 +1,13 @@
+//function for updating balance and deposit 
+
+function updateSpanText(id, amount){
+    const current = document.getElementById(id).innerText;
+    const currentAmount = parseFloat(current);
+    const totalAmount = amount + currentAmount;
+    document.getElementById(id).innerText= totalAmount;
+}
+
+
 //login button event handler
 const submitBtn = document.getElementById("login");
 submitBtn.addEventListener("click",()=>{
@@ -23,16 +33,28 @@ depositBtn.addEventListener("click",()=>{
     document.getElementById("deposit-amount").value="";
 
      // balance section 
-    updateSpanText("currentBalance", depositNumber)
+    updateSpanText("currentBalance", depositNumber);    
+})
 
-    //function for updating balance and deposit 
+//withdraw button event handler
+const withdrawBtn = document.getElementById("add-withdraw");
+    withdrawBtn.addEventListener("click",()=>{
+    // deposit section
+    const withdrawAmount = document.getElementById("withdraw-amount").value;
+    const withdrawNumber = parseFloat(withdrawAmount);
 
-    function updateSpanText(id, depositNumber){
-        const current = document.getElementById(id).innerText;
-        const currentAmount = parseFloat(current);
-        const totalAmount = depositNumber + currentAmount;
-        document.getElementById(id).innerText= totalAmount;
-    }
+    //deposit section update
+    updateSpanText("currentWithdraw",withdrawNumber);
+    document.getElementById("deposit-amount").value="";
+
+    // balance section update
+
+    const current= document.getElementById("currentBalance").innerText;
+    const currentBalance = parseFloat(current);
+    const updatedBalance = currentBalance - withdrawNumber;
+    document.getElementById("currentBalance").innerText= updatedBalance;
+
+
     
 })
 
